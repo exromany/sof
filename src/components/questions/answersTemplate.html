@@ -1,0 +1,53 @@
+<div>
+  <div ng-show="notFound">
+    <h3>404</h3>
+    <p class="lead">Question not found</p>
+  </div>
+
+  <div ng-hide="notFound">
+    <div ng-hide="question">
+      <p class="lead">loading...</p>
+    </div>
+    <div ng-show="question">
+      <div>
+        <h3>{{ question.title }}</h3>
+        <hr>
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" ng-src="{{question.owner.profile_image}}" style="width: 32px; height: 32px;">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              {{ question.owner.display_name }}
+              <span class="pull-right small">asked {{ question.creation_date * 1000 | date:'mediumDate':'-0'}}</span>
+            </h4>
+            <div ng-bind-html="question.body"></div>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div ng-show="question.answers.length">
+        <p class="lead">{{ question.answers.length }} answers:</p>
+        <div class="media" ng-repeat="item in question.answers | orderBy:'-score'">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" ng-src="{{item.owner.profile_image}}" style="width: 32px; height: 32px;">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              {{ item.owner.display_name }}
+              <span class="pull-right small">answered {{ item.creation_date * 1000 | date:'mediumDate':'-0'}}</span>
+            </h4>
+            <div ng-bind-html="item.body"></div>
+          </div>
+        </div>
+      </div>
+      <div ng-hide="question.answers.length">
+        <p class="lead">no answers</p>
+      </div>
+    </div>
+  </div>
+</div>

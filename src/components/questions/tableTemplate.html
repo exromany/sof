@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th ng-class="{sortable: sortBy === 1, asc: sortAsc}" ng-click="sortAsc = sortBy !== 1 ? false : !sortAsc; sortBy = 1">Author</th>
+      <th ng-class="{sortable: sortBy === 2, asc: sortAsc}" ng-click="sortAsc = sortBy !== 2 ? false : !sortAsc; sortBy = 2">Subject</th>
+      <th ng-class="{sortable: sortBy === 3, asc: sortAsc}" ng-click="sortAsc = sortBy !== 3 ? false : !sortAsc; sortBy = 3">Answers</th>
+      <th ng-class="{sortable: sortBy === 4, asc: sortAsc}" ng-click="sortAsc = sortBy !== 4 ? false : !sortAsc; sortBy = 4">Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in rows | orderBy:sort() track by $index" ng-click="setActive($index)" ng-dblclick="openAnswers($index)" ng-class="{active: isActive($index)}">
+      <td><a ui-sref="questions.search.quickview({type: 'author', author: item.owner})">{{ item.owner.display_name }}</a></td>
+      <td><a ui-sref="questions.answers({id: item.question_id})" ng-bind-html="item.title">{{ item.title }}</a></td>
+      <td><a ui-sref="questions.answers({id: item.question_id})" class="badge">{{ item.answer_count }}</a></td>
+      <td>
+        <a ui-sref="questions.search.quickview({type: 'tag', tag: tag})" ng-repeat="tag in item.tags" class="label label-info">{{ tag }}</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

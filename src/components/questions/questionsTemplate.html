@@ -1,0 +1,16 @@
+<div>
+  <div ng-hide="loaded">
+    <p class="lead">searching...</p>
+  </div>
+  <div ng-show="loaded">
+    <div ng-show="questions.items.length">
+      <p class="lead">Questions for "<b>{{query}}</b>":</p>
+      <div questions="questions.items"></div>
+    </div>
+    <div ng-hide="questions.items.length">
+      <p class="lead">no questions found for <b>{{ query }}</b></p>
+    </div>
+  </div>
+
+  <div ui-view="quickview" class="quickview"></div>
+</div>

@@ -1,0 +1,115 @@
+.header {
+  margin-bottom: 40px;
+}
+
+.container {
+  margin-bottom: 20px;
+}
+
+.label {
+  margin-right: 6px;
+}
+
+.table th {
+  cursor: pointer;
+  padding-right: 20px !important;
+  position: relative;
+
+  &.sortable:after {
+    visibility: visible;
+  }
+  &:hover:after {
+    visibility: visible;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 16px;
+    visibility: hidden;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: none;
+    border-bottom: 4px solid #000;
+    border-top: 4px solid #000;
+    border-bottom: none;
+  }
+  &.sortable.asc:after {
+    border-top: none;
+    border-bottom: 4px solid #000;
+  }
+}
+
+.quickview {
+  transition: all .3s ease-in-out;
+
+  &.ng-enter-active, &.ng-leave {
+     .inside {
+      height: 400;
+      padding: 20px 0 0;
+      opacity: 1;
+    }
+  }
+
+  &.ng-enter, &.ng-leave-active   {
+    .inside {
+      height: 0;
+      padding: 0;
+      opacity: 0;
+    }
+  }
+
+  .inside {
+    border-top: 1px solid lightgrey;
+    padding: 20px 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background: #EAEAEA;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
+.page {
+  &.ng-enter, &.ng-leave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition:all .5s ease-in-out;
+  }
+
+  &.ng-enter {
+    opacity: 0;
+    transform:scale3d(0.5, 0.5, 0.5);
+  }
+
+  &.ng-enter-active {
+    opacity: 1;
+    transform:scale3d(1, 1, 1);
+  }
+
+  &.ng-leave {
+    opacity: 1;
+    transform:translate3d(0, 0, 0);
+  }
+
+  &.ng-leave-active {
+    opacity: 0;
+    transform:translate3d(0, 100px, 0);
+  }
+}
+
+.table .active {
+  td {
+    background: yellow;
+  }
+}

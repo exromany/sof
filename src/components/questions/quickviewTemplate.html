@@ -1,0 +1,13 @@
+<div class="inside">
+  <a class="close" ui-sref="^"><i class="glyphicon glyphicon-remove"></i></a>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="lead" ng-show="type === 'tag'">Top questions with tag <b>{{ tag }}</b></p>
+        <p class="lead" ng-show="type === 'author'">Top questions by <b>{{ author.display_name }}</b></p>
+
+        <div questions="questions.items"></div>
+      </div>
+    </div>
+  </div>
+</div>
